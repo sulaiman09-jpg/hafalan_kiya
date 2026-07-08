@@ -8,8 +8,12 @@ import path from "path";
 import fs from "fs/promises";
 import { GoogleGenAI } from "@google/genai";
 import dotenv from "dotenv";
+import { fileURLToPath } from "url";
 
 dotenv.config();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = 3000;
@@ -36,7 +40,7 @@ if (process.env.GEMINI_API_KEY) {
   console.log("GEMINI_API_KEY not found. AI features will run in simulation mode.");
 }
 
-const DB_FILE = path.join(process.cwd(), "database.json");
+let DB_FILE = path.join(process.cwd(), "database.json");
 
 // Default Seeding Data
 const DEFAULT_SURAHS = [
@@ -154,17 +158,54 @@ let database = {
 
 // Database Persistence helpers
 async function loadDB() {
-  try {
-    const data = await fs.readFile(DB_FILE, "utf-8");
-    database = JSON.parse(data);
+  const pathsToTry = [
+    path.join(process.cwd(), "database.json"),
+    path.join(__dirname, "database.json"),
+    path.join(__dirname, "..", "database.json"),
+    path.join(process.cwd(), "api", "database.json"),
+  ];
+
+  let loadedData = null;
+  let foundPath = DB_FILE;
+
+  for (const p of pathsToTry) {
+    try {
+      const data = await fs.readFile(p, "utf-8");
+      loadedData = JSON.parse(data);
+      foundPath = p;
+      console.log(`Database loaded successfully from path: ${p}`);
+      break;
+    } catch (e) {
+      // ignore and try next path
+    }
+  }
+
+  if (loadedData) {
+    database = loadedData;
+    DB_FILE = foundPath;
     // Ensure surat matches default just in case
     if (!database.surat || database.surat.length === 0) {
       database.surat = DEFAULT_SURAHS;
     }
-    console.log("Database loaded from file successfully.");
-  } catch (error) {
-    console.log("No database file found. Seeding default data and writing to database.json...");
+  } else {
+    console.log("No database file found. Seeding default data and writing to default path database.json...");
     await saveDB();
+  }
+
+  // Override config from environment variables if present (useful for serverless environments like Vercel)
+  if (process.env.GAS_URL) {
+    if (!database.config) {
+      database.config = { gasUrl: "", mode: "local" };
+    }
+    database.config.gasUrl = process.env.GAS_URL;
+    database.config.mode = process.env.DATABASE_MODE === "local" ? "local" : "gas";
+    console.log("Database config overridden by environment variables:", database.config);
+  } else if (process.env.DATABASE_MODE) {
+    if (!database.config) {
+      database.config = { gasUrl: "", mode: "local" };
+    }
+    database.config.mode = process.env.DATABASE_MODE === "gas" ? "gas" : "local";
+    console.log("Database mode set by environment variable:", database.config.mode);
   }
 }
 
