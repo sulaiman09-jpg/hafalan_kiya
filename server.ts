@@ -914,6 +914,17 @@ function respondError(msg) {
   res.send(sourceCode);
 });
 
+// Error handling middleware to catch unhandled errors and return readable messages
+app.use((err: any, req: any, res: any, next: any) => {
+  console.error("Express Unhandled Error:", err);
+  res.status(500).json({
+    error: err.message || "Internal Server Error",
+    stack: err.stack,
+    path: req.path,
+    method: req.method
+  });
+});
+
 // Vite Integration inside server.ts (SPA fallback and asset serving)
 if (process.env.NODE_ENV !== "production") {
   // ESM/Vite integration
