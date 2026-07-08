@@ -1,0 +1,250 @@
+{
+  "users": [
+    {
+      "id": "U1",
+      "username": "admin",
+      "password": "123",
+      "role": "Admin",
+      "nama": "Sulaiman, S.Pd.I",
+      "status": "Aktif"
+    },
+    {
+      "id": "U2",
+      "username": "maisyaroh",
+      "password": "123",
+      "role": "Guru",
+      "nama": "Ustazah Maisyaroh",
+      "status": "Aktif"
+    },
+    {
+      "id": "U3",
+      "username": "aisyah",
+      "password": "123",
+      "role": "Guru",
+      "nama": "Ustazah Aisyah, S.Th.I",
+      "status": "Aktif"
+    },
+    {
+      "id": "U4",
+      "username": "budi",
+      "password": "123",
+      "role": "Wali Kelas",
+      "nama": "Budi Santoso, M.Pd",
+      "status": "Aktif"
+    },
+    {
+      "id": "U5",
+      "username": "kiya",
+      "password": "123",
+      "role": "Siswa",
+      "nama": "Kiya",
+      "status": "Aktif"
+    },
+    {
+      "id": "U6",
+      "username": "ortu_kiya",
+      "password": "123",
+      "role": "Orang Tua",
+      "nama": "Rahadini (Orang Tua Kiya)",
+      "status": "Aktif"
+    }
+  ],
+  "siswa": [
+    {
+      "nis": 1,
+      "nama": "Kiya",
+      "kelas": 1,
+      "jk": "P",
+      "tempat_lahir": "",
+      "tanggal_lahir": "",
+      "alamat": "Peumahan Garden",
+      "orang_tua": "Rahadini",
+      "hp": 81226025524,
+      "wali_kelas": "Sulaiman, S.Psi",
+      "guru_tahfidz": "Ustazah Maisyaroh",
+      "foto": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&auto=format&fit=crop&q=80"
+    }
+  ],
+  "guru": [
+    {
+      "id": "G1",
+      "nama": "Ustazah Maisyaroh",
+      "mapel": "Tahfidz Al-Qur'an",
+      "hp": "081122334455"
+    },
+    {
+      "id": "G2",
+      "nama": "Ustazah Aisyah, S.Th.I",
+      "mapel": "Tahfidz & Tajwid",
+      "hp": "081155443322"
+    },
+    {
+      "id": "G3",
+      "nama": "Budi Santoso, M.Pd",
+      "mapel": "Matematika",
+      "hp": "081299887766"
+    }
+  ],
+  "surat": [],
+  "setoran": [],
+  "murojaah": [
+    {
+      "id": "M1",
+      "tanggal": "2026-07-01",
+      "nis": "1001",
+      "surat": 114,
+      "nilai": 95,
+      "catatan": "Lancar dan merdu",
+      "status": "Lancar"
+    },
+    {
+      "id": "M2",
+      "tanggal": "2026-07-03",
+      "nis": "1001",
+      "surat": 113,
+      "nilai": 88,
+      "catatan": "Qalqalah kubra perlu ditekankan",
+      "status": "Lancar"
+    },
+    {
+      "id": "M3",
+      "tanggal": "2026-07-05",
+      "nis": "1002",
+      "surat": 114,
+      "nilai": 82,
+      "catatan": "Cukup baik, sudah lulus setoran",
+      "status": "Sedang"
+    },
+    {
+      "id": "M4",
+      "tanggal": "2026-06-25",
+      "nis": "1003",
+      "surat": 112,
+      "nilai": 75,
+      "catatan": "Perlu diulang bagian tajwidnya",
+      "status": "Perlu Diulang"
+    }
+  ],
+  "target": [
+    {
+      "kelas": "7A",
+      "semester": 1,
+      "surat": [
+        114,
+        113,
+        112,
+        111,
+        110,
+        109,
+        108,
+        107,
+        106,
+        105,
+        104,
+        103,
+        102,
+        101,
+        100
+      ]
+    },
+    {
+      "kelas": "7A",
+      "semester": 2,
+      "surat": [
+        99,
+        98,
+        97,
+        96,
+        95,
+        94,
+        93,
+        92,
+        91,
+        90,
+        89,
+        88,
+        87
+      ]
+    },
+    {
+      "kelas": "7B",
+      "semester": 1,
+      "surat": [
+        114,
+        113,
+        112,
+        111,
+        110,
+        109,
+        108,
+        107,
+        106,
+        105
+      ]
+    }
+  ],
+  "jadwal": [
+    {
+      "id": "J1",
+      "hari": "Senin",
+      "jam": "07:30 - 09:00",
+      "kelas": "7A",
+      "guru": "Ustazah Maisyaroh",
+      "jenis": "Hafalan"
+    },
+    {
+      "id": "J2",
+      "hari": "Selasa",
+      "jam": "07:30 - 09:00",
+      "kelas": "7A",
+      "guru": "Ustazah Maisyaroh",
+      "jenis": "Murojaah"
+    },
+    {
+      "id": "J3",
+      "hari": "Rabu",
+      "jam": "07:30 - 09:00",
+      "kelas": "7B",
+      "guru": "Ustazah Aisyah, S.Th.I",
+      "jenis": "Hafalan"
+    },
+    {
+      "id": "J4",
+      "hari": "Kamis",
+      "jam": "07:30 - 09:00",
+      "kelas": "7B",
+      "guru": "Ustazah Aisyah, S.Th.I",
+      "jenis": "Murojaah"
+    },
+    {
+      "id": "J5",
+      "hari": "Jumat",
+      "jam": "07:30 - 09:00",
+      "kelas": "7A",
+      "guru": "Ustazah Maisyaroh",
+      "jenis": "Ujian"
+    }
+  ],
+  "sertifikat": [
+    {
+      "id": "CERT-001",
+      "nis": "1001",
+      "tanggal": "2026-07-05",
+      "jenis": "Wisuda Juz 30",
+      "link_pdf": "#",
+      "qrCode": "CERT-001-VERIFIED"
+    },
+    {
+      "id": "CERT-MRBCLEKW",
+      "nis": "1001",
+      "tanggal": "2026-07-08",
+      "jenis": "Wisuda Juz 30",
+      "link_pdf": "#",
+      "qrCode": "CERT-MRBCLEKW-VERIFIED"
+    }
+  ],
+  "config": {
+    "gasUrl": "https://script.google.com/macros/s/AKfycbxv0K5PJP3w39yXKAN06ojZxf2Lqi4OedolIrzcHIvsPF-cXU65a70udNhl0-YLu1xd/exec",
+    "mode": "gas"
+  }
+}

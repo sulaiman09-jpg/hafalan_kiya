@@ -1,0 +1,6 @@
+{
+  "name": "Sistem Hafalan Juz Amma",
+  "description": "Sistem informasi pelacakan, setoran, murojaah, dan penilaian hafalan surat-surat pendek Juz Amma dilengkapi integrasi Google Sheets dan fitur AI.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
