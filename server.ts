@@ -12,8 +12,16 @@ import { fileURLToPath } from "url";
 
 dotenv.config();
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+let currentDirname = process.cwd();
+try {
+  if (typeof import.meta !== "undefined" && import.meta.url) {
+    currentDirname = path.dirname(fileURLToPath(import.meta.url));
+  } else if (typeof __dirname !== "undefined") {
+    currentDirname = __dirname;
+  }
+} catch (e) {
+  // safe fallback
+}
 
 const app = express();
 const PORT = 3000;
@@ -160,8 +168,8 @@ let database = {
 async function loadDB() {
   const pathsToTry = [
     path.join(process.cwd(), "database.json"),
-    path.join(__dirname, "database.json"),
-    path.join(__dirname, "..", "database.json"),
+    path.join(currentDirname, "database.json"),
+    path.join(currentDirname, "..", "database.json"),
     path.join(process.cwd(), "api", "database.json"),
   ];
 
